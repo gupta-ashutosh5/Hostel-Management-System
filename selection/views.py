@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'home.html')
 
-
+# Def is used to define a function.
+# Below function registers a user.
 def register(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
@@ -30,6 +31,9 @@ def register(request):
                     return HttpResponse('Disabled account')
             else:
                 return HttpResponse('Invalid Login')
+        else:
+            return render(request, 'reg_form.html',
+                          {'form': form})
     else:
         form = UserForm()
         args = {'form': form}
